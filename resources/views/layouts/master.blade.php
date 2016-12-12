@@ -6,7 +6,7 @@
 <body>
         <div class="container">
             <div class="content">
-                <div class="title">Welcome to Laravel 5</div>
+         @yield('content')
             </div>
         </div>
     </body>
