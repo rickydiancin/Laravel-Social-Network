@@ -4,6 +4,7 @@ Welcome!
 @endsection
 
 @section('content')
+
  <div class="row">
  <div class="col-md-6">
    <h3>Sign Up</h3>
@@ -41,4 +42,17 @@ Welcome!
      </form>
  </div>
  </div>
+
+     @if(count($errors) >= 0)
+     <div class="row">
+     <h3>Errors</h3>
+         <div class="col-md-6">
+             <ul>
+                 @foreach($errors->all() as $error)
+                 <li>{{ $error }}</li>
+                 @endforeach
+             </ul>
+         </div>
+     </div>
+     @endif
 @endsection
