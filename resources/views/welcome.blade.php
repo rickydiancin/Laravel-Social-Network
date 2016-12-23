@@ -43,11 +43,10 @@ Welcome!
  </div>
  </div>
 
-     @if(count($errors) >= 0)
+     @if(count($errors) > 0)
      <div class="row">
-     <h3>Errors</h3>
          <div class="col-md-6">
-             <ul>
+             <ul> 
                  @foreach($errors->all() as $error)
                  <li>{{ $error }}</li>
                  @endforeach
