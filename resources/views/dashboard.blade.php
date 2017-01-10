@@ -8,11 +8,12 @@ Dashboard
 	<section class="row new-post">
 		<div class="col-md-6 col-md-offset-3">
 			<header><h3>What do you have to say?</h3></header>
-			<form action="">
+			<form action="{{ route('post.create')}}" method="post">
 				<div class="form-group">
-				<textarea class="form-control" rows="5" name="new-post" id="new-post" placeholder="Your Post Here.."></textarea>
+				<textarea class="form-control" rows="5" name="body" id="new-post" placeholder="Your Post Here.."></textarea>
 				</div>
 				<button type="submit" class="btn btn-primary">Create Post</button>
+				<input type="hidden" name="_token" value="{{ Session::token() }}">
 			</form>
 		</div>
 	</section>
