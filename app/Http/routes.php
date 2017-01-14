@@ -14,9 +14,7 @@
 Route::group(['middlewareGroups' => ['web']], function () {
 
 
-    Route::get('/test', function () {
-    return view('test2');
-    });
+
 
 	Route::get('/', function () {
     return view('welcome');
@@ -30,15 +28,37 @@ Route::group(['middlewareGroups' => ['web']], function () {
     	'uses' => 'UserController@postSignIn',
     	'as' => 'signin'
     	]);
+   Route::get('/logout', [
+    'uses' => 'UserController@getLogout',
+        'as' => 'logout'
+        ]);
+
+Route::get('/account', [
+    'uses' => 'UserController@getAccount',
+    'as' => 'account'
+]);
 
     Route::get('/dashboard', [
-  	'uses' => 'UserController@getDashboard',
+  	'uses' => 'PostController@getDashboard',
     	'as' => 'dashboard',
         'middleware' => 'auth'
     	]);
 
     Route::post('/createpost', [ 
         'uses' => 'PostController@postCreatePost',
-        'as' => 'post.create'
+        'as' => 'post.create',
+         'middleware' => 'auth'
         ]);
+    Route::get('/delete-post/{post_id}', [
+    'uses' => 'PostController@getDeletePost',
+        'as' => 'post.delete',
+        'middleware' => 'auth'
+        ]);
+
+Route::post('/edit', [
+    'uses' => 'PostController@postEditPost',
+    'as' => 'edit'
+]);
+   
+
 });
